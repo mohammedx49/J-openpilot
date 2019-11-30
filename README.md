@@ -1,6 +1,6 @@
 [![](https://i.imgur.com/UetIFyH.jpg)](#)
 
-Welcome to openpilot
+Welcome to openpilot SPECIFICALLY FOR THE 2019 CHEVY BOLT
 ======
 
 [openpilot](http://github.com/commaai/openpilot) is an open source driver assistance system. Currently, it performs the functions of Adaptive Cruise Control (ACC) and Automated Lane Centering (ALC) for selected Honda, Toyota, Acura, Lexus, Chevrolet, Hyundai, Kia, Subaru, Volkswagen. It's about on par with Tesla Autopilot and GM Super Cruise, and better than [all other manufacturers](http://www.thedrive.com/tech/5707/the-war-for-autonomous-driving-part-iii-us-vs-germany-vs-japan).
@@ -63,6 +63,7 @@ Supported Cars
 | Buick<sup>3</sup>     | Regal 2018<sup>6</sup>             | Adaptive Cruise      | Yes     | Yes            | 0mph             | 7mph           |
 | Chevrolet<sup>3</sup> | Malibu 2017<sup>6</sup>            | Adaptive Cruise      | Yes     | Yes            | 0mph             | 7mph           |
 | Chevrolet<sup>3</sup> | Volt 2017-18<sup>6</sup>           | Adaptive Cruise      | Yes     | Yes            | 0mph             | 7mph           |
+| Chevrolet<sup>3</sup> | Bolt 2019                          | Driver Confidence II | Yes     | No             | 0mph             | 7mph           |
 | Cadillac<sup>3</sup>  | ATS 2018                           | Adaptive Cruise      | Yes     | Yes            | 0mph             | 7mph           |
 | Chrysler              | Pacifica 2017-18<sup>7</sup>       | Adaptive Cruise      | Yes     | Stock          | 0mph             | 9mph           |
 | Chrysler              | Pacifica Hybrid 2017-18<sup>7</sup>| Adaptive Cruise      | Yes     | Stock          | 0mph             | 9mph           |
