@@ -193,7 +193,7 @@ static int gm_tx_hook(CAN_FIFOMailBox_TypeDef *to_send) {
 
     if (violation) {
       //Replace payload with appropriate zero value for expected rolling counter
-      to_send->RDLR = vals[rolling_counter];
+      to_send->RDHR = vals[rolling_counter];
       //tx = 0;
     }
   }
