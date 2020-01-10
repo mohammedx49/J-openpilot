@@ -630,6 +630,28 @@ int spi_cb_rx(uint8_t *data, int len, uint8_t *data_out) {
 
 // ***************************** main code *****************************
 
+// *pump_hook message_pump_hook;
+
+// void enable_message_pump(uint32_t divider, *pump_hook hook) {
+//   //Timer for LKAS pump
+//   message_pump_hook = hook;
+//   timer_init(TIM7, divider);
+//   NVIC_EnableIRQ(TIM7_IRQn);
+// }
+
+// void update_message_pump_rate(uint32_t divider) {
+//   //TODO: test if this works
+//   TIM7->PSC = divider-1;
+// }
+
+// void disable_message_pump() {
+//   NVIC_DisableIRQ(TIM7_IRQn);
+//   pump_hook = null;
+// }
+
+
+
+
 // cppcheck-suppress unusedFunction ; used in headers not included in cppcheck
 void __initialize_hardware_early(void) {
   early();
@@ -645,6 +667,20 @@ uint64_t tcnt = 0;
 // go into NOOUTPUT when the EON does not send a heartbeat for this amount of seconds.
 #define EON_HEARTBEAT_IGNITION_CNT_ON 5U
 #define EON_HEARTBEAT_IGNITION_CNT_OFF 2U
+
+
+
+
+void TIM7_IRQHandler(void) {
+  //TODO: This needs to check for ignition and stop itself?
+  if (TIM7->SR != 0) {
+    if (message_pump_hook != NULL) {
+      pump_send(message_pump_hook);
+    }
+  }
+  TIM7->SR = 0;
+}
+
 
 // called once per second
 // cppcheck-suppress unusedFunction ; used in headers not included in cppcheck
@@ -760,6 +796,7 @@ int main(void) {
   TIM2->EGR = TIM_EGR_UG;
   // use TIM2->CNT to read
 
+
   // default to silent mode to prevent issues with Ford
   // hardcode a specific safety mode if you want to force the panda to be in a specific mode
   int err = safety_set_mode(SAFETY_NOOUTPUT, 0);
@@ -789,6 +826,10 @@ int main(void) {
   // 1hz
   timer_init(TIM9, 1464);
   NVIC_EnableIRQ(TIM1_BRK_TIM9_IRQn);
+
+  // //Timer for LKAS pump
+  // timer_init(TIM7, 15);
+  // NVIC_EnableIRQ(TIM7_IRQn);
 
 #ifdef DEBUG
   puts("DEBUG ENABLED\n");

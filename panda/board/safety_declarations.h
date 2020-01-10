@@ -31,6 +31,12 @@ typedef void (*rx_hook)(CAN_FIFOMailBox_TypeDef *to_push);
 typedef int (*tx_hook)(CAN_FIFOMailBox_TypeDef *to_send);
 typedef int (*tx_lin_hook)(int lin_num, uint8_t *data, int len);
 typedef int (*fwd_hook)(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd);
+typedef CAN_FIFOMailBox_TypeDef * (*pump_hook)(void);
+
+void enable_message_pump(uint32_t divider, pump_hook hook);
+void update_message_pump_rate(uint32_t divider);
+void disable_message_pump(void);
+
 
 typedef struct {
   safety_hook_init init;
@@ -47,6 +53,8 @@ int gas_interceptor_prev = 0;
 
 // This is set by USB command 0xdf
 bool long_controls_allowed = 1;
+
+bool message_pump_active = false;
 
 // avg between 2 tracks
 #define GET_INTERCEPTOR(msg) (((GET_BYTE((msg), 0) << 8) + GET_BYTE((msg), 1) + ((GET_BYTE((msg), 2) << 8) + GET_BYTE((msg), 3)) / 2 ) / 2)
