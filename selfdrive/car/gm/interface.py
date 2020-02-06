@@ -120,6 +120,15 @@ class CarInterface(CarInterfaceBase):
       ret.steerRatioRear = 0.
       ret.centerToFront = ret.wheelbase * 0.4 # guess for tourx
 
+    elif candidate == CAR.EQUINOX:
+      ret.minEnableSpeed = 18 * CV.MPH_TO_MS
+      ret.mass = 3500. * CV.LB_TO_KG + STD_CARGO_KG # (3849+3708)/2
+      ret.safetyModel = car.CarParams.SafetyModel.gm
+      ret.wheelbase = 2.72 #107.3 inches in meters
+      ret.steerRatio = 14.4 # guess for tourx
+      ret.steerRatioRear = 0. # unknown online
+      ret.centerToFront = ret.wheelbase * 0.4 # wild guess
+
     elif candidate == CAR.CADILLAC_ATS:
       ret.minEnableSpeed = 18 * CV.MPH_TO_MS
       ret.mass = 1601. + STD_CARGO_KG
