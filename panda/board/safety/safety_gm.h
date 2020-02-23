@@ -297,6 +297,7 @@ static void gm_init(int16_t param) {
 
 
 static int gm_fwd_hook(int bus_num, CAN_FIFOMailBox_TypeDef *to_fwd) {
+  return -1;
   int bus_fwd = -1;
   if (bus_num == 0) {
     bus_fwd = 1;  // Camera is on CAN2
