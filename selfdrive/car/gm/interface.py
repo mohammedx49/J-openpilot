@@ -147,6 +147,15 @@ class CarInterface(CarInterfaceBase):
       ret.steerRatio = 14.6   # it's 16.3 without rear active steering
       ret.steerRatioRear = 0. # TODO: there is RAS on this car!
       ret.centerToFront = ret.wheelbase * 0.465
+    elif candidate == CAR.ESCALADE:
+      # supports stop and go, but initial engage must be above 18mph (which include conservatism)
+      ret.minEnableSpeed = 18 * CV.MPH_TO_MS
+      ret.mass = 2645. + STD_CARGO_KG
+      ret.safetyModel = car.CarParams.SafetyModel.gm
+      ret.wheelbase = 3.30
+      ret.steerRatio = 17.3
+      ret.steerRatioRear = 0.
+      ret.centerToFront = ret.wheelbase * 0.4  # wild guess
 
 
     # TODO: get actual value, for now starting with reasonable value for
