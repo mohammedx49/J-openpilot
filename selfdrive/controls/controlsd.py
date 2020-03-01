@@ -75,7 +75,7 @@ def data_sample(CI, CC, sm, can_sock, state, mismatch_counter, can_error_counter
   sm.update(0)
 
   events = list(CS.events)
-  events += list(sm['dMonitoringState'].events)
+  #events += list(sm['dMonitoringState'].events)
   add_lane_change_event(events, sm['pathPlan'])
   enabled = isEnabled(state)
 
@@ -342,7 +342,7 @@ def data_send(sm, pm, CS, CI, CP, VM, state, events, actuators, v_cruise_kph, rk
     can_sends = CI.apply(CC)
     pm.send('sendcan', can_list_to_can_capnp(can_sends, msgtype='sendcan', valid=CS.canValid))
 
-  force_decel = sm['dMonitoringState'].awarenessStatus < 0.
+  force_decel = False #sm['dMonitoringState'].awarenessStatus < 0.
 
   # controlsState
   dat = messaging.new_message()
@@ -553,8 +553,8 @@ def controlsd_thread(sm=None, pm=None, can_sock=None):
       events.append(create_event('canError', [ET.NO_ENTRY, ET.IMMEDIATE_DISABLE]))
     if not sounds_available:
       events.append(create_event('soundsUnavailable', [ET.NO_ENTRY, ET.PERMANENT]))
-    if internet_needed:
-      events.append(create_event('internetConnectivityNeeded', [ET.NO_ENTRY, ET.PERMANENT]))
+    # if internet_needed:
+    #   events.append(create_event('internetConnectivityNeeded', [ET.NO_ENTRY, ET.PERMANENT]))
     if community_feature_disallowed:
       events.append(create_event('communityFeatureDisallowed', [ET.PERMANENT]))
     if read_only and not passive:

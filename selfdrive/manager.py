@@ -133,15 +133,15 @@ ThermalStatus = cereal.log.ThermalData.ThermalStatus
 # comment out anything you don't want to run
 managed_processes = {
   "thermald": "selfdrive.thermald",
-  "uploader": "selfdrive.loggerd.uploader",
+  #"uploader": "selfdrive.loggerd.uploader",
   "deleter": "selfdrive.loggerd.deleter",
   "controlsd": "selfdrive.controls.controlsd",
   "plannerd": "selfdrive.controls.plannerd",
   "radard": "selfdrive.controls.radard",
-  "dmonitoringd": "selfdrive.controls.dmonitoringd",
+  #"dmonitoringd": "selfdrive.controls.dmonitoringd",
   "ubloxd": ("selfdrive/locationd", ["./ubloxd"]),
-  "loggerd": ("selfdrive/loggerd", ["./loggerd"]),
-  "logmessaged": "selfdrive.logmessaged",
+  #"loggerd": ("selfdrive/loggerd", ["./loggerd"]),
+  #"logmessaged": "selfdrive.logmessaged",
   "locationd": "selfdrive.locationd.locationd",
   "tombstoned": "selfdrive.tombstoned",
   "logcatd": ("selfdrive/logcatd", ["./logcatd"]),
@@ -156,7 +156,7 @@ managed_processes = {
   "clocksd": ("selfdrive/clocksd", ["./clocksd"]),
   "gpsd": ("selfdrive/sensord", ["./gpsd"]),
   "updated": "selfdrive.updated",
-  "dmonitoringmodeld": ("selfdrive/modeld", ["./dmonitoringmodeld"]),
+  #"dmonitoringmodeld": ("selfdrive/modeld", ["./dmonitoringmodeld"]),
   "modeld": ("selfdrive/modeld", ["./modeld"]),
 }
 
@@ -198,7 +198,7 @@ car_started_processes = [
   'plannerd',
   'loggerd',
   'radard',
-  'dmonitoringd',
+  #'dmonitoringd',
   'calibrationd',
   'paramsd',
   'camerad',
@@ -212,7 +212,7 @@ if ANDROID:
     'sensord',
     'clocksd',
     'gpsd',
-    'dmonitoringmodeld',
+    #'dmonitoringmodeld',
     'deleter',
   ]
 

@@ -84,10 +84,10 @@ class CarInterfaceBase():
   def create_common_events(self, cs_out, extra_gears=[]):
     events = []
 
-    if cs_out.doorOpen:
-      events.append(create_event('doorOpen', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
-    if cs_out.seatbeltUnlatched:
-      events.append(create_event('seatbeltNotLatched', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
+    # if cs_out.doorOpen:
+    #   events.append(create_event('doorOpen', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
+    # if cs_out.seatbeltUnlatched:
+    #   events.append(create_event('seatbeltNotLatched', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
     if cs_out.gearShifter != GearShifter.drive and cs_out.gearShifter not in extra_gears:
       events.append(create_event('wrongGear', [ET.NO_ENTRY, ET.SOFT_DISABLE]))
     if cs_out.gearShifter == GearShifter.reverse:
