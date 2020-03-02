@@ -43,13 +43,10 @@ class CarState(CarStateBase):
     ret.steeringPressed = abs(ret.steeringTorque) > STEER_THRESHOLD
 
     # 1 - open, 0 - closed
-    ret.doorOpen = 0 #(pt_cp.vl["BCMDoorBeltStatus"]['FrontLeftDoor'] == 1 or
-      # pt_cp.vl["BCMDoorBeltStatus"]['FrontRightDoor'] == 1 or
-      # pt_cp.vl["BCMDoorBeltStatus"]['RearLeftDoor'] == 1 or
-      # pt_cp.vl["BCMDoorBeltStatus"]['RearRightDoor'] == 1)
+    ret.doorOpen = 0
 
     # 1 - latched
-    ret.seatbeltUnlatched = 0 #pt_cp.vl["BCMDoorBeltStatus"]['LeftSeatBelt'] == 0
+    ret.seatbeltUnlatched = 0
     ret.leftBlinker = pt_cp.vl["BCMTurnSignals"]['TurnSignals'] == 1
     ret.rightBlinker = pt_cp.vl["BCMTurnSignals"]['TurnSignals'] == 2
 
